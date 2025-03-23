@@ -1,0 +1,21 @@
+.warrior-card img {
+  height: 200px; /* Définir une hauteur uniforme */
+  width: 200px; /* Définir une largeur uniforme */
+  object-fit: cover;
+  object-fit: contain;
+}
+
+.warrior-card {
+  border: solid black;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(173, 216, 230, 0.3);
+}
+
+.warrior-container {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+}

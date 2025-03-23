@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("https://images5.alphacoders.com/372/thumb-1920-372287.jpg")
+    no-repeat center center / cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-content {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  color: #f1c40f;
+  font-family: "Uncial Antiqua", cursive;
+  position: relative;
+  z-index: 2;
+}
+
+.error-title {
+  font-size: 50px;
+  text-shadow: 4px 4px 10px #ff4500;
+  animation: glow 1.5s infinite alternate;
+}
+
+.error-text {
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.gandalf-gif {
+  width: 300px;
+  margin-top: 20px;
+}
+
+.error-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: white;
+  background: #8b0000;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.error-button:hover {
+  background: #b22222;
+  transform: scale(1.1);
+}
+
+/* 🔥 Animation de fumée 🔥 */
+.smoke {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: url("../assets/smoke.png") no-repeat center center / contain;
+  opacity: 0.6;
+  animation: smokeAnimation 8s infinite linear;
+}
+
+.smoke-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.smoke-2 {
+  top: 50%;
+  left: 60%;
+  animation-delay: 2s;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 4px 4px 10px #ff4500;
+  }
+  100% {
+    text-shadow: 4px 4px 20px #ff0000;
+  }
+}
+
+@keyframes smokeAnimation {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2) translateY(-30px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.5) translateY(-60px);
+    opacity: 0;
+  }
+}

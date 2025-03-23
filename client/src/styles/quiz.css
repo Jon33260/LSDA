@@ -1,0 +1,88 @@
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 25px;
+  border-radius: 15px;
+  border: 3px solid #d4af37;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  text-align: center;
+
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 32px;
+  color: #d4af37;
+  text-shadow: 0 0 10px #ffcc00;
+}
+
+.question-card {
+  padding: 20px;
+  background: rgba(39, 39, 39, 0.9);
+  border: 3px solid #8b5a2b;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #8b5a2b;
+}
+
+.options button {
+  background: linear-gradient(45deg, #2e8b57, #3cb371);
+  border: 2px solid #d4af37;
+  color: #f4d03f;
+  font-size: 18px;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.options button:hover {
+  background: #daa520;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+}
+
+.result {
+  padding: 20px;
+  background: rgba(39, 39, 39, 0.9);
+  border: 3px solid #d4af37;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #d4af37;
+}
+
+.quiz-container button {
+  background: #8b0000;
+  color: #f4d03f;
+  border: 2px solid #d4af37;
+  font-size: 20px;
+  padding: 12px 24px;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.quiz-container button:hover {
+  background: #d4af37;
+  color: #8b0000;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+}
+
+/* Animation pour l'apparition du quiz */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

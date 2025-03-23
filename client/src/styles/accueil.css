@@ -1,0 +1,38 @@
+.container {
+  background-image: url("/src/assets/images/mordor.jpg");
+  background-size: cover; /* Couvre toute la section */
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Empêche la répétition */
+  min-height: 100vh; /* Assure que la section prend toute la hauteur de l'écran */
+  width: 100vw; /* Assure que la largeur est bien prise en compte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem;
+  color: white;
+}
+
+.titre {
+  display: flex;
+  font-size: 0.9rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.introduction {
+  display: flex;
+  width: 60%; /* Le paragraphe prend toute la largeur */
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0 10px; /* Ajoute un léger padding pour éviter que le texte colle aux bords */
+  box-sizing: border-box; /* Assure que le padding ne dépasse pas la largeur */
+  line-height: 1.9;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    background-size: cover; /* Couvre toujours toute la zone */
+    background-position: top center; /* Aligne mieux l'image */
+    min-height: 100vh; /* Prend toute la hauteur de l'écran */
+  }
+}

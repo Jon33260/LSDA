@@ -1,0 +1,74 @@
+/* Conteneur de la barre de navigation */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #2f2f2f; /* Fond sombre pour un look mystérieux */
+  padding: 1rem;
+  height: 120px;
+  border: none; /* Enlève toute bordure */
+}
+
+.connexion {
+  display: flex;
+  justify-content: center;
+  width: 6rem;
+  height: 2rem;
+}
+
+/* Image du logo (ajuste la taille selon ton besoin) */
+img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 3rem;
+  object-fit: cover;
+}
+
+/* Liste des liens de la navbar */
+ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: none; /* Enlève la bordure */
+}
+
+/* Style des liens dans la navbar */
+ul a {
+  text-decoration: none;
+  color: #f2b600; /* Or doré pour rappeler l'Anneau Unique */
+  font-family: "Garamond", serif; /* Police élégante inspirée des textes anciens */
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  outline: none; /* Enlève le contour */
+  border: none; /* Enlève la bordure sous les liens */
+}
+
+/* Effet de survol des liens */
+ul a:hover {
+  color: #8b0000; /* Rouge sombre pour l'effet survol, évoque Sauron */
+  text-decoration: underline; /* Sous-ligne les liens au survol */
+}
+
+/* Style supplémentaire : effet au survol de la navbar */
+.navbar:hover {
+  background-color: #1a1a1a; /* Légère variation de fond sombre */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* Ombre pour donner de la profondeur */
+}
+
+/* Pour un look plus "doré" et mystique sur mobile */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Barre de navigation verticale sur petits écrans */
+    justify-content: center;
+    height: auto; /* Ajuste la hauteur */
+  }
+
+  ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}

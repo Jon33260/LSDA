@@ -1,0 +1,33 @@
+.Forces {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.bien,
+.mal {
+  width: 45%;
+}
+
+.bien img,
+.mal img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bien {
+  background-color: rgba(173, 216, 230, 0.3); /* Bleu clair pour le bien */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.mal {
+  background-color: rgba(255, 69, 0, 0.3); /* Rouge orangé pour le mal */
+  padding: 20px;
+  border-radius: 10px;
+}

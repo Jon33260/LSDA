@@ -1,0 +1,42 @@
+.histoire {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto; /* Centre le conteneur sur la page */
+  text-align: center;
+}
+
+section {
+  margin-bottom: 2rem; /* Espacement entre chaque section */
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  color: #f2b600;
+  font-size: 2rem; /* Taille du titre de chaque section */
+  margin-bottom: 1rem; /* Espacement sous chaque titre */
+  text-align: center;
+}
+
+p {
+  line-height: 1.8; /* Espacement entre les lignes pour plus d'aération */
+  margin-bottom: 1rem; /* Espacement entre les paragraphes */
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    font-size: 1rem; /* Réduit la taille de la police pour les petits écrans */
+    margin: 15px; /* Réduit la marge pour les petits écrans */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  p {
+    font-size: 0.9rem; /* Réduit encore la taille de la police pour les écrans très petits */
+    margin: 10px; /* Réduit les marges */
+  }
+}
