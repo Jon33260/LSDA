@@ -6,8 +6,6 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 // Import des middlewares
-import auth from "./middlewares/auth";
-import form from "./middlewares/form";
 
 import warriorsActions from "./modules/warriors/warriorsActions";
 
@@ -17,7 +15,7 @@ router.get("/api/warriors/bien", warriorsActions.getGoodWarriors);
 router.get("/api/warriors", warriorsActions.browse);
 router.get("/api/warriors/:id", warriorsActions.read);
 router.put("/api/warriors/:id", warriorsActions.edit);
-router.post("/api/warriors", form.validate, warriorsActions.add);
+router.post("/api/warriors", warriorsActions.add);
 router.delete("/api/warriors", warriorsActions.destroy);
 
 import weaponsActions from "./modules/weapons/weaponsActions";
@@ -31,8 +29,5 @@ router.delete("/api/armes", weaponsActions.destroy);
 import memberActions from "./modules/member/memberActions";
 
 router.get("/api/members", memberActions.browse);
-router.post("/api/members", auth.hashPassword, memberActions.add);
-
-router.post("/api/login", auth.login);
 
 export default router;

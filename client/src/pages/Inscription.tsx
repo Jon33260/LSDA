@@ -10,6 +10,7 @@ export default function Inscription() {
     race: "",
     age: "",
     img: "",
+    faction: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,24 +28,18 @@ export default function Inscription() {
         },
         body: JSON.stringify(newWarrior),
       });
-      console.info("coucou depuis inscription");
 
       if (!response.ok) {
         throw new Error("Erreur lors de l'ajout du guerrier");
       }
-      console.info("apres le if");
 
       const savedWarrior = await response.json(); // Récupère la réponse du serveur (avec l'ID généré)
-      console.info("3e etape");
 
       setWarriors([...warriors, savedWarrior]); // Ajoute le guerrier à la liste
 
-      console.info("4e etape");
-
-      setNewWarrior({ nom: "", race: "", age: "", img: "" }); // Réinitialisation du formulaire
+      setNewWarrior({ nom: "", race: "", age: "", img: "", faction: "" }); // Réinitialisation du formulaire
     } catch (error) {
       console.error("Erreur:", error);
-      console.info("5e etape");
     }
   };
   return (
@@ -83,6 +78,14 @@ export default function Inscription() {
             name="img"
             placeholder="URL de l'image"
             value={newWarrior.img}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="faction"
+            placeholder="Faction"
+            value={newWarrior.faction}
             onChange={handleChange}
             required
           />

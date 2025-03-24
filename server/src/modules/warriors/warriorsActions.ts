@@ -45,6 +45,7 @@ const edit: RequestHandler = async (req, res, next) => {
       age: req.body.age,
       race: req.body.race,
       img: req.body.img,
+      faction: req.body.faction,
     };
 
     const affectedRows = await warriorsRepository.update(warriors);
@@ -68,6 +69,7 @@ const add: RequestHandler = async (req, res, next) => {
       age: req.body.age,
       race: req.body.race,
       img: req.body.img,
+      faction: req.body.faction,
     };
 
     // Create the item

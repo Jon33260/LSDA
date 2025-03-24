@@ -8,6 +8,7 @@ type Warriors = {
   age: number;
   race: string;
   img: string;
+  faction: string;
 };
 
 class warriorsRepository {
@@ -16,8 +17,14 @@ class warriorsRepository {
   async create(warriors: Omit<Warriors, "id">) {
     // Execute the SQL INSERT query to add a new item to the "warriors" table
     const [result] = await databaseClient.query<Result>(
-      "insert into warriors (nom, age, race, img) values (?, ?, ?, ?)",
-      [warriors.nom, warriors.age, warriors.race, warriors.img],
+      "INSERT INTO warriors (nom, age, race, img, faction) VALUES (?, ?, ?, ?, ?)",
+      [
+        warriors.nom,
+        warriors.age,
+        warriors.race,
+        warriors.img,
+        warriors.faction,
+      ], // Ajouter faction ici
     );
 
     // Return the ID of the newly inserted item
