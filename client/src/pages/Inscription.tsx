@@ -27,18 +27,24 @@ export default function Inscription() {
         },
         body: JSON.stringify(newWarrior),
       });
+      console.info("coucou depuis inscription");
 
       if (!response.ok) {
         throw new Error("Erreur lors de l'ajout du guerrier");
       }
+      console.info("apres le if");
 
       const savedWarrior = await response.json(); // Récupère la réponse du serveur (avec l'ID généré)
+      console.info("3e etape");
 
       setWarriors([...warriors, savedWarrior]); // Ajoute le guerrier à la liste
+
+      console.info("4e etape");
 
       setNewWarrior({ nom: "", race: "", age: "", img: "" }); // Réinitialisation du formulaire
     } catch (error) {
       console.error("Erreur:", error);
+      console.info("5e etape");
     }
   };
   return (

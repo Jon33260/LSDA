@@ -69,7 +69,6 @@ class warriorsRepository {
       [faction],
     );
 
-    console.info(rows); // Vérifie bien que 'race' est dans la réponse de la requête
     return rows;
   }
 
@@ -79,7 +78,6 @@ class warriorsRepository {
       [faction],
     );
 
-    console.info(rows);
     return rows;
   }
 }

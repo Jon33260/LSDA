@@ -2,25 +2,21 @@ import type { RequestHandler } from "express";
 
 import Joi from "joi";
 
-const animalSchema = Joi.object({
+const warriorSchema = Joi.object({
   name: Joi.string().min(3).max(40).required().messages({
     "string.min": "Une longueur de 3 caractères est demandée",
     "string.empty": "Le champ ne peut pas être vide",
     "any.required": "Le champ est obligatoire",
   }),
-  breed_id: Joi.number().required(),
-  species_id: Joi.number().required(),
-  tattooed: Joi.boolean().required(),
-  vaccinated: Joi.boolean().required(),
-  gender: Joi.string().valid("male", "female").required(),
+  nom: Joi.string().required(),
+  race: Joi.string().required(),
   age: Joi.number().required(),
-  description: Joi.string().required(),
-  photo: Joi.string().required(),
-  address: Joi.string().required(),
+  img: Joi.string().required(),
 });
 
 const validate: RequestHandler = (req, res, next) => {
-  const { error } = animalSchema.validate(req.body);
+  console.info("Requête reçue :", req.body);
+  const { error } = warriorSchema.validate(req.body);
 
   if (error) {
     res.json(error.details[0].message);
