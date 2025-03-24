@@ -9,8 +9,9 @@ const router = express.Router();
 import auth from "./middlewares/auth";
 import form from "./middlewares/form";
 
-// Define item-related routes
 import warriorsActions from "./modules/warriors/warriorsActions";
+
+router.get("/api/warriors/bien", warriorsActions.getGoodWarriors);
 
 router.get("/api/warriors", warriorsActions.browse);
 router.get("/api/warriors/:id", warriorsActions.read);

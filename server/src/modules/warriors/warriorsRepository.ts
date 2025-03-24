@@ -39,7 +39,9 @@ class warriorsRepository {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all items from the "warriors" table
-    const [rows] = await databaseClient.query<Rows>("select * from warriors");
+    const [rows] = await databaseClient.query<Rows>(
+      "select id, nom, age, race, img, faction from warriors",
+    );
 
     // Return the array of warriors
     return rows as Warriors[];
@@ -59,6 +61,16 @@ class warriorsRepository {
       [id],
     );
     return result.affectedRows;
+  }
+  async readByFaction(faction: string) {
+    // Sélectionne aussi la colonne 'race' pour inclure cette information dans la réponse
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, nom, age, race, img FROM warriors WHERE faction = ?",
+      [faction],
+    );
+
+    console.info(rows); // Vérifie bien que 'race' est dans la réponse de la requête
+    return rows;
   }
 }
 

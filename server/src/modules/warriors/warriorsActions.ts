@@ -91,4 +91,15 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, destroy };
+const getGoodWarriors: RequestHandler = async (req, res, next) => {
+  try {
+    // Récupérer uniquement les guerriers de la faction "bien"
+    const goodWarriors = await warriorsRepository.readByFaction("bien");
+
+    res.json(goodWarriors);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, edit, add, destroy, getGoodWarriors };
