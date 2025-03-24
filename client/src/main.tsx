@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 /* ************************************************************************* */
 // Import des pages
 import App from "./App";
-import Auth from "./pages/Auth";
+
 import DuelQuiz from "./pages/DuelQuiz";
 import ErrorPage from "./pages/ErrorPage";
 import ForceDuBien from "./pages/ForceDuBien";
@@ -62,10 +62,7 @@ const router = createBrowserRouter([
         element: <Inscription />,
         loader: () => getAllLsda(),
       },
-      {
-        path: "/auth",
-        element: <Auth />,
-      },
+
       { path: "*", element: <ErrorPage /> },
     ],
   },
