@@ -11,6 +11,7 @@ import form from "./middlewares/form";
 
 import warriorsActions from "./modules/warriors/warriorsActions";
 
+router.get("/api/warriors/mal", warriorsActions.getDarkWarriors);
 router.get("/api/warriors/bien", warriorsActions.getGoodWarriors);
 
 router.get("/api/warriors", warriorsActions.browse);

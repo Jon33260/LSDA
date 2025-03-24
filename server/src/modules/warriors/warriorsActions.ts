@@ -102,4 +102,21 @@ const getGoodWarriors: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, destroy, getGoodWarriors };
+const getDarkWarriors: RequestHandler = async (req, res, next) => {
+  try {
+    const darkWarriors = await warriorsRepository.readByFactionDark("mal");
+    res.json(darkWarriors);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  read,
+  edit,
+  add,
+  destroy,
+  getDarkWarriors,
+  getGoodWarriors,
+};

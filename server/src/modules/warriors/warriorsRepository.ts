@@ -72,6 +72,16 @@ class warriorsRepository {
     console.info(rows); // Vérifie bien que 'race' est dans la réponse de la requête
     return rows;
   }
+
+  async readByFactionDark(faction: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, nom, age, race, img FROM warriors WHERE faction = ?",
+      [faction],
+    );
+
+    console.info(rows);
+    return rows;
+  }
 }
 
 export default new warriorsRepository();
