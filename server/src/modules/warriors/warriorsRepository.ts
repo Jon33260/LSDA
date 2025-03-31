@@ -8,6 +8,7 @@ type Warriors = {
   age: number;
   race: string;
   img: string;
+  faction: string;
 };
 
 class warriorsRepository {
@@ -16,8 +17,14 @@ class warriorsRepository {
   async create(warriors: Omit<Warriors, "id">) {
     // Execute the SQL INSERT query to add a new item to the "warriors" table
     const [result] = await databaseClient.query<Result>(
-      "insert into warriors (nom, age, race, img) values (?, ?, ?, ?)",
-      [warriors.nom, warriors.age, warriors.race, warriors.img],
+      "INSERT INTO warriors (nom, age, race, img, faction) VALUES (?, ?, ?, ?, ?)",
+      [
+        warriors.nom,
+        warriors.age,
+        warriors.race,
+        warriors.img,
+        warriors.faction,
+      ], // Ajouter faction ici
     );
 
     // Return the ID of the newly inserted item
@@ -39,7 +46,9 @@ class warriorsRepository {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all items from the "warriors" table
-    const [rows] = await databaseClient.query<Rows>("select * from warriors");
+    const [rows] = await databaseClient.query<Rows>(
+      "select id, nom, age, race, img, faction from warriors",
+    );
 
     // Return the array of warriors
     return rows as Warriors[];
@@ -59,6 +68,24 @@ class warriorsRepository {
       [id],
     );
     return result.affectedRows;
+  }
+  async readByFaction(faction: string) {
+    // Sélectionne aussi la colonne 'race' pour inclure cette information dans la réponse
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, nom, age, race, img FROM warriors WHERE faction = ?",
+      [faction],
+    );
+
+    return rows;
+  }
+
+  async readByFactionDark(faction: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, nom, age, race, img FROM warriors WHERE faction = ?",
+      [faction],
+    );
+
+    return rows;
   }
 }
 

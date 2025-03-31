@@ -10,6 +10,7 @@ export default function Inscription() {
     race: "",
     age: "",
     img: "",
+    faction: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +37,7 @@ export default function Inscription() {
 
       setWarriors([...warriors, savedWarrior]); // Ajoute le guerrier à la liste
 
-      setNewWarrior({ nom: "", race: "", age: "", img: "" }); // Réinitialisation du formulaire
+      setNewWarrior({ nom: "", race: "", age: "", img: "", faction: "" }); // Réinitialisation du formulaire
     } catch (error) {
       console.error("Erreur:", error);
     }
@@ -77,6 +78,14 @@ export default function Inscription() {
             name="img"
             placeholder="URL de l'image"
             value={newWarrior.img}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="faction"
+            placeholder="Faction"
+            value={newWarrior.faction}
             onChange={handleChange}
             required
           />

@@ -1,8 +1,6 @@
 import "../styles/PicturesLsda.css";
 
 export default function PicturesLsda({ warriors }: WarriorsProps) {
-  console.info("Données reçues par PicturesLsda:", warriors);
-
   return (
     <div className="warrior-container">
       {warriors.map((warrior) => (

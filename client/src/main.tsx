@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 /* ************************************************************************* */
 // Import des pages
 import App from "./App";
-import Auth from "./pages/Auth";
+
 import DuelQuiz from "./pages/DuelQuiz";
 import ErrorPage from "./pages/ErrorPage";
 import ForceDuBien from "./pages/ForceDuBien";
@@ -17,12 +17,13 @@ import HomePage from "./pages/HomePage";
 import Inscription from "./pages/Inscription";
 import Warriors from "./pages/Warriors";
 
-import { getAllLsda } from "./services/requests";
+import { getAllLsda, getAllQuestions } from "./services/requests";
 
 import "./styles/inscription.css";
 import "./styles/picturesLsda.css";
 import "./styles/accueil.css";
 import "./styles/histoire.css";
+import "./styles/QuestionLsda.css";
 import "./styles/warrior.css";
 
 /* ************************************************************************* */
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/quiz",
         element: <DuelQuiz />,
+        loader: () => getAllQuestions(),
       },
       {
         path: "/histoire",
@@ -62,10 +64,7 @@ const router = createBrowserRouter([
         element: <Inscription />,
         loader: () => getAllLsda(),
       },
-      {
-        path: "/auth",
-        element: <Auth />,
-      },
+
       { path: "*", element: <ErrorPage /> },
     ],
   },

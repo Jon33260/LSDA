@@ -45,6 +45,7 @@ const edit: RequestHandler = async (req, res, next) => {
       age: req.body.age,
       race: req.body.race,
       img: req.body.img,
+      faction: req.body.faction,
     };
 
     const affectedRows = await warriorsRepository.update(warriors);
@@ -68,6 +69,7 @@ const add: RequestHandler = async (req, res, next) => {
       age: req.body.age,
       race: req.body.race,
       img: req.body.img,
+      faction: req.body.faction,
     };
 
     // Create the item
@@ -91,4 +93,32 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, destroy };
+const getGoodWarriors: RequestHandler = async (req, res, next) => {
+  try {
+    // Récupérer uniquement les guerriers de la faction "bien"
+    const goodWarriors = await warriorsRepository.readByFaction("bien");
+
+    res.json(goodWarriors);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getDarkWarriors: RequestHandler = async (req, res, next) => {
+  try {
+    const darkWarriors = await warriorsRepository.readByFactionDark("mal");
+    res.json(darkWarriors);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  read,
+  edit,
+  add,
+  destroy,
+  getDarkWarriors,
+  getGoodWarriors,
+};

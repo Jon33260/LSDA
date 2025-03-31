@@ -8,7 +8,6 @@ export default function () {
       <Link to="/">
         <img src={paysage} alt="Logo du seigneur des anneaux" />
       </Link>
-      <Link to="/auth">Se connecter</Link>
 
       <ul>
         <Link to="/quiz">DuelQuiz</Link>
