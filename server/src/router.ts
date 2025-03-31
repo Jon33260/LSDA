@@ -30,4 +30,12 @@ import memberActions from "./modules/member/memberActions";
 
 router.get("/api/members", memberActions.browse);
 
+import questionsActions from "./modules/Questions/questionsActions";
+
+router.get("/api/questions", questionsActions.browse);
+router.get("/api/questions/:id", questionsActions.read);
+router.put("/api/questions/:id", questionsActions.edit);
+router.post("/api/questions", questionsActions.add);
+router.delete("/api/questions", questionsActions.destroy);
+
 export default router;

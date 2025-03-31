@@ -1,0 +1,173 @@
+/* Conteneur principal du quiz */
+.question-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond noir semi-transparent */
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+  /* Centrer le conteneur */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Décalage pour centrer */
+  margin-top: 4rem;
+}
+
+h2,
+h3 {
+  font-family: "Cinzel", serif; /* Police inspirée de l'univers du Seigneur des Anneaux */
+  color: #ffcc00; /* Couleur dorée pour les titres */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+input[type="text"],
+select {
+  background-color: #2b2b2b;
+  color: #ffcc00;
+  border: 1px solid #ffcc00;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #ff8000; /* Changement de couleur au focus */
+}
+
+button {
+  background-color: #333;
+  color: #ffcc00;
+  border: 2px solid #ffcc00;
+  padding: 12px;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #ffcc00;
+  color: #333;
+  transform: scale(1.05);
+}
+
+button.correct {
+  background-color: #28a745; /* Vert pour la bonne réponse */
+  border-color: #28a745;
+  color: white;
+}
+
+button.incorrect {
+  background-color: #dc3545; /* Rouge pour la mauvaise réponse */
+  border-color: #dc3545;
+  color: white;
+}
+
+button:disabled {
+  background-color: #666; /* Boutons désactivés */
+  cursor: not-allowed;
+}
+
+.score-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.score-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.ranking {
+  margin-top: 20px;
+  text-align: left;
+  color: #ffcc00;
+}
+
+.score-item {
+  font-size: 18px;
+  padding: 8px;
+  border-bottom: 1px solid #444;
+}
+
+.score-item span {
+  display: block;
+  font-size: 20px;
+}
+
+/* Effet de transition pour le classement */
+.score-item:nth-child(odd) {
+  background-color: #333;
+}
+
+.score-item:nth-child(even) {
+  background-color: #444;
+}
+
+/* Animation de transition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Effet de fade-in pour les questions */
+.question-card {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.question-card h2 {
+  font-size: 22px;
+  font-family: "Cinzel", serif;
+  color: #ffcc00;
+}
+
+.options button {
+  background-color: #333;
+  color: #ffcc00;
+  border: 2px solid #ffcc00;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  width: 45%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.options button:hover {
+  background-color: #ffcc00;
+  color: #333;
+  transform: scale(1.05);
+}
+
+.options button.correct {
+  background-color: #28a745;
+}
+
+.options button.incorrect {
+  background-color: #dc3545;
+}
+
+/* Effet sur l'écran de fin de quiz */
+.score-container p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #ffcc00;
+}

@@ -1,16 +1,21 @@
 .container {
-  background-image: url("/src/assets/images/mordor.jpg");
-  background-size: cover; /* Couvre toute la section */
-  background-position: center; /* Centre l'image */
-  background-repeat: no-repeat; /* Empêche la répétition */
-  min-height: 100vh; /* Assure que la section prend toute la hauteur de l'écran */
-  width: 100vw; /* Assure que la largeur est bien prise en compte */
+  background-image: url("/src/assets/images/foncombe.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   padding: 2rem;
   color: white;
+
+  filter: blur(0); /* Assure-toi qu'il n'y a pas de flou appliqué */
 }
 
 .titre {

@@ -8,4 +8,11 @@ const getAllLsda = async () => {
     .catch((error) => console.error(error));
 };
 
-export { getAllLsda };
+const getAllQuestions = async () => {
+  return axios
+    .get(`${API}/api/questions`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+};
+
+export { getAllLsda, getAllQuestions };
