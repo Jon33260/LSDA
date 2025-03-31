@@ -5,8 +5,9 @@ interface Warrior {
   age: number;
   arme: string;
   img: string;
+  faction: string;
 }
 
 interface WarriorsProps {
-  warriors: Warrior[];
+  warrior: Warrior;
 }

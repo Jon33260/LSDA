@@ -11,6 +11,10 @@ type Warriors = {
   faction: string;
 };
 
+type Weapon = {
+  type: string;
+};
+
 class warriorsRepository {
   // The C of CRUD - Create operation
 
@@ -87,6 +91,24 @@ class warriorsRepository {
 
     return rows;
   }
+
+  async readAllWithWeapons() {
+    // Requête SQL avec une jointure LEFT JOIN entre 'warriors' et 'weapons'
+    const [rows] = await databaseClient.query<Rows>(
+      `
+        SELECT warriors.id, warriors.nom, warriors.age, warriors.race, 
+               warriors.img, warriors.faction, weapons.type AS weapon_type
+        FROM warriors
+        LEFT JOIN warriorsweapons ON warriors.id = warriorsweapons.warriors_id
+        LEFT JOIN weapons ON weapons.id = warriorsweapons.weapons_id
+      `,
+    );
+
+    // Retourner les données des guerriers avec leurs armes
+    return rows;
+  }
+
+  // Les autres méthodes CRUD (read, create, update, delete, etc.) restent inchangées
 }
 
 export default new warriorsRepository();

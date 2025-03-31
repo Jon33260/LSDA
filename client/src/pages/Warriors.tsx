@@ -1,12 +1,8 @@
-import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import communaute from "../assets/images/communaute.jpg";
 import volcan from "../assets/images/volcan.jpg";
-import PicturesLsda from "../components/PicturesLsda";
 
 export default function Warriors() {
-  const warrior = useLoaderData() as Warrior[];
-
   return (
     <div>
       <h1>Liste des guerriers</h1>
@@ -24,7 +20,6 @@ export default function Warriors() {
           </Link>
         </div>
       </section>
-      <PicturesLsda warriors={warrior} />
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default function ForceDuMal() {
 
   return (
     <div className="page-container">
-      <h1 className="title">Force du Bien</h1>
+      <h1 className="title">Force du Mal</h1>
       <div className="bien-container">
         {warriors.map((warrior) => (
           <div key={warrior.id} className="bien-card">
