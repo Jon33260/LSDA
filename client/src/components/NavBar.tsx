@@ -11,6 +11,7 @@ export default function () {
 
       <ul>
         <Link to="/quiz">DuelQuiz</Link>
+
         <Link to="/histoire">Histoire</Link>
         <Link to="/warriors">Guerriers</Link>
         <Link to="/inscription">Inscription</Link>

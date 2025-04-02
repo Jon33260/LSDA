@@ -3,7 +3,7 @@ interface Warrior {
   nom: string;
   race: string;
   age: number;
-  arme: string;
+  weapon_type: string;
   img: string;
   faction: string;
 }

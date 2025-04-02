@@ -35,7 +35,7 @@ VALUES("Aragorn", 110, "Humain", "https://encrypted-tbn0.gstatic.com/images?q=tb
 ("Haldir", 1000, "Elfe", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhJuVqwkghTZI0jYSrqs-9mhQPsJSidzEHnQ&s", "bien");
 
 INSERT INTO weapons(type)
-VALUES ("Sword"), ("Bow"), ("Ax"), ("Dagger"), ("magic stick");
+VALUES ("Epée"), ("Arc"), ("Hache"), ("Dague"), ("Bâton magique");
 
 
 

@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 export default function Inscription() {
   const warriorsData = useLoaderData() as Warrior[];
   console.info("Données chargées dans Inscription:", warriorsData);
-  const [warriors, setWarriors] = useState(() => useLoaderData() as Warrior[]);
+
+  // Charger les guerriers depuis localStorage au démarrage
+  const [warriors, setWarriors] = useState<Warrior[]>(() => {
+    const savedWarriors = localStorage.getItem("warriors");
+    return savedWarriors ? JSON.parse(savedWarriors) : warriorsData;
+  });
+
   const [newWarrior, setNewWarrior] = useState({
     nom: "",
     race: "",
     age: "",
     img: "",
     faction: "",
+    arme: "", // Ajout du champ "arme"
   });
+
+  useEffect(() => {
+    // Sauvegarde dans localStorage à chaque modification
+    localStorage.setItem("warriors", JSON.stringify(warriors));
+  }, [warriors]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewWarrior({ ...newWarrior, [e.target.name]: e.target.value });
@@ -33,15 +45,24 @@ export default function Inscription() {
         throw new Error("Erreur lors de l'ajout du guerrier");
       }
 
-      const savedWarrior = await response.json(); // Récupère la réponse du serveur (avec l'ID généré)
+      const savedWarrior = await response.json(); // Récupération de la réponse serveur
 
-      setWarriors([...warriors, savedWarrior]); // Ajoute le guerrier à la liste
+      const updatedWarriors = [...warriors, savedWarrior];
+      setWarriors(updatedWarriors); // Mise à jour de l'état
 
-      setNewWarrior({ nom: "", race: "", age: "", img: "", faction: "" }); // Réinitialisation du formulaire
+      setNewWarrior({
+        nom: "",
+        race: "",
+        age: "",
+        img: "",
+        faction: "",
+        arme: "",
+      }); // Réinitialisation du formulaire
     } catch (error) {
       console.error("Erreur:", error);
     }
   };
+
   return (
     <>
       <h1>Liste des Guerriers</h1>
@@ -72,7 +93,6 @@ export default function Inscription() {
             onChange={handleChange}
             required
           />
-
           <input
             type="text"
             name="img"
@@ -86,6 +106,14 @@ export default function Inscription() {
             name="faction"
             placeholder="Faction"
             value={newWarrior.faction}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="arme"
+            placeholder="Arme"
+            value={newWarrior.arme}
             onChange={handleChange}
             required
           />

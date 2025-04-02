@@ -107,8 +107,21 @@ class warriorsRepository {
     // Retourner les données des guerriers avec leurs armes
     return rows;
   }
+  async readByFactionWithWeapons(faction: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      `
+        SELECT warriors.id, warriors.nom, warriors.age, warriors.race, 
+               warriors.img, warriors.faction, weapons.type AS weapon_type
+        FROM warriors
+        LEFT JOIN warriorsweapons ON warriors.id = warriorsweapons.warriors_id
+        LEFT JOIN weapons ON weapons.id = warriorsweapons.weapons_id
+        WHERE warriors.faction = ?
+      `,
+      [faction],
+    );
 
-  // Les autres méthodes CRUD (read, create, update, delete, etc.) restent inchangées
+    return rows;
+  }
 }
 
 export default new warriorsRepository();

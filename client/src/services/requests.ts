@@ -3,7 +3,7 @@ const API = import.meta.env.VITE_API_URL;
 
 const getAllLsda = async () => {
   return axios
-    .get(`${API}/api/warriors`)
+    .get(`${API}/api/warriors/with-weapons`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };

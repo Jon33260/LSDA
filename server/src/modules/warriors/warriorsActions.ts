@@ -97,7 +97,8 @@ const destroy: RequestHandler = async (req, res, next) => {
 
 const getGoodWarriors: RequestHandler = async (req, res, next) => {
   try {
-    const goodWarriors = await warriorsRepository.readByFaction("bien");
+    const goodWarriors =
+      await warriorsRepository.readByFactionWithWeapons("bien");
     res.json(goodWarriors);
   } catch (err) {
     next(err);
@@ -106,7 +107,8 @@ const getGoodWarriors: RequestHandler = async (req, res, next) => {
 
 const getDarkWarriors: RequestHandler = async (req, res, next) => {
   try {
-    const darkWarriors = await warriorsRepository.readByFactionDark("mal");
+    const darkWarriors =
+      await warriorsRepository.readByFactionWithWeapons("mal");
     res.json(darkWarriors);
   } catch (err) {
     next(err);

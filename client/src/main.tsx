@@ -50,8 +50,9 @@ const router = createBrowserRouter([
       {
         path: "/forcedumal",
         element: <ForceDuMal />,
-        loader: () => getAllMal(),
+        loader: async () => ({ warriors: await getAllMal() }),
       },
+
       {
         path: "/quiz",
         element: <DuelQuiz />,
