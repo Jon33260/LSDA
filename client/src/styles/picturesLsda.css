@@ -3,6 +3,7 @@
   width: 200px; /* Définir une largeur uniforme */
   object-fit: cover;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 .warrior-card {
@@ -11,11 +12,23 @@
   text-align: center;
   padding: 2rem;
   background-color: rgba(173, 216, 230, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s
+    ease;
+}
+
+.warrior-card:hover {
+  transform: scale(1.05); /* Agrandir légèrement la carte */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajouter une ombre portée */
+  background-color: rgba(173, 216, 230, 0.6); /* Changer la couleur de fond lors du survol */
+}
+
+.warrior-card:hover img {
+  transform: scale(1.1);
 }
 
 .warrior-container {
   display: flex;
   gap: 4rem;
   flex-wrap: wrap;
-  margin-left: 2rem;
+  margin-left: 4.5rem;
 }

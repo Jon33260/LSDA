@@ -11,7 +11,8 @@ export default function () {
 
       <ul>
         <Link to="/quiz">DuelQuiz</Link>
-
+        <Link to="/anneaupage">L'anneau de pouvoir</Link>
+        <Link to="/generateurdenom">Générateur de nom</Link>
         <Link to="/histoire">Histoire</Link>
         <Link to="/warriors">Guerriers</Link>
         <Link to="/inscription">Inscription</Link>

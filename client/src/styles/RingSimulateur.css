@@ -1,0 +1,113 @@
+/* Conteneur principal qui contient tout */
+.main-container {
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Conteneur pour le titre et le bouton */
+.ring-content {
+  position: relative;
+  z-index: 2; /* Pour s'assurer que ce contenu est au-dessus de l'Œil */
+  margin-bottom: 20px;
+}
+
+/* Bouton stylisé */
+.ring-button {
+  background-color: #b89e4c;
+  color: white;
+  width: 24rem;
+  border: 2px solid #8b7d47;
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ring-button:hover {
+  background-color: #f1c232;
+  border-color: #f1c232;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+}
+
+.ring-button:active {
+  transform: scale(0.98);
+}
+
+.ring-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+}
+
+/* Div contenant l'image de l'Œil de Sauron */
+.sauron-eye-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Bouton spécifique pour retirer l'anneau */
+.remove-ring-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: 2px solid #ff3333;
+  margin-top: 20px;
+}
+
+/* Animation pour l'apparition de l'œil */
+.sauron-eye {
+  width: 70vw;
+  height: auto;
+  opacity: 0;
+  animation: eyeAppear 2s forwards;
+}
+
+.spectral-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  pointer-events: none;
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes eyeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
