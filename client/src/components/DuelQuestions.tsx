@@ -208,9 +208,9 @@ export default function QuestionsLsda() {
           value={difficulty}
           onChange={(e) => setDifficulty(e.target.value)}
         >
-          <option value="easy">Facile</option>
-          <option value="medium">Moyen</option>
-          <option value="hard">Difficile</option>
+          <option value="facile">Facile</option>
+          <option value="moyen">Moyen</option>
+          <option value="difficile">Difficile</option>
         </select>
       </div>
 

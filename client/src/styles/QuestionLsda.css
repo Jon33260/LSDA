@@ -129,6 +129,7 @@ button:disabled {
 
 /* Effet de fade-in pour les questions */
 .question-card {
+  margin-top: 2rem;
   animation: fadeIn 1s ease-in-out;
 }
 

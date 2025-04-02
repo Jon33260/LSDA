@@ -7,10 +7,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import des pages
 import App from "./App";
 
+import AnneauPage from "./pages/AnneauPage";
 import DuelQuiz from "./pages/DuelQuiz";
 import ErrorPage from "./pages/ErrorPage";
 import ForceDuBien from "./pages/ForceDuBien";
 import ForceDuMal from "./pages/ForceDuMal";
+import GenerateurDeNom from "./pages/GenerateurDeNom";
 import Histoire from "./pages/Histoire";
 import HomePage from "./pages/HomePage";
 
@@ -70,6 +72,14 @@ const router = createBrowserRouter([
         path: "/inscription",
         element: <Inscription />,
         loader: () => getAllLsda(),
+      },
+      {
+        path: "/generateurdenom",
+        element: <GenerateurDeNom />,
+      },
+      {
+        path: "/anneaupage",
+        element: <AnneauPage />,
       },
 
       { path: "*", element: <ErrorPage /> },
