@@ -32,30 +32,24 @@ export default function QuestionsLsda() {
 
   // Fonction pour mélanger les questions
   const shuffleArray = (array: Question[]): Question[] => {
-    const shuffledArray = [...array]; // Crée une copie du tableau pour ne pas le modifier en place
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ]; // Échanger les éléments
-    }
-    return shuffledArray;
+    return array
+      .map((item) => ({ item, sort: Math.random() })) // Associe un nombre aléatoire à chaque élément
+      .sort((a, b) => a.sort - b.sort) // Trie par ce nombre
+      .map(({ item }) => item); // Extrait les éléments mélangés
   };
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     getAllQuestions()
       .then((data) => {
-        console.info("Questions récupérées :", data); // Affichage dans la console pour vérifier
-        // Limiter à 10 questions et les mélanger
-        const shuffledQuestions = shuffleArray(data.slice(0, 10));
-        setAnswerQuestions(shuffledQuestions); // Mettre à jour les questions mélangées
+        const shuffledQuestions = shuffleArray(data).slice(0, 10);
+
+        setAnswerQuestions([...shuffledQuestions]);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des questions", error);
       });
-  }, []); // Ce useEffect se déclenche lors du premier chargement du composant
+  }, []);
 
   useEffect(() => {
     const storedScores: Score[] = JSON.parse(
@@ -183,13 +177,11 @@ export default function QuestionsLsda() {
               : "C'est un match nul !"}
         </p>
 
-        {/* Affichage du classement */}
         <div className="ranking">
           <h3>Classement :</h3>
           {displayScores()}
         </div>
 
-        {/* Bouton pour réinitialiser les scores */}
         <button type="button" onClick={resetScores}>
           Réinitialiser les scores
         </button>

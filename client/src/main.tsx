@@ -17,7 +17,12 @@ import HomePage from "./pages/HomePage";
 import Inscription from "./pages/Inscription";
 import Warriors from "./pages/Warriors";
 
-import { getAllLsda, getAllQuestions } from "./services/requests";
+import {
+  getAllBien,
+  getAllLsda,
+  getAllMal,
+  getAllQuestions,
+} from "./services/requests";
 
 import "./styles/inscription.css";
 import "./styles/picturesLsda.css";
@@ -40,11 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/forcedubien",
         element: <ForceDuBien />,
+        loader: async () => ({ warriors: await getAllBien() }),
       },
       {
         path: "/forcedumal",
         element: <ForceDuMal />,
+        loader: async () => ({ warriors: await getAllMal() }),
       },
+
       {
         path: "/quiz",
         element: <DuelQuiz />,
@@ -57,7 +65,6 @@ const router = createBrowserRouter([
       {
         path: "/warriors",
         element: <Warriors />,
-        loader: () => getAllLsda(),
       },
       {
         path: "/inscription",

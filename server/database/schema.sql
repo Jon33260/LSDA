@@ -13,6 +13,14 @@ CREATE TABLE weapons (
   type VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE warriorsweapons (
+  warriors_id INT UNSIGNED NOT NULL,
+  weapons_id INT UNSIGNED NOT NULL,
+  FOREIGN KEY (warriors_id) REFERENCES warriors(id),
+  FOREIGN KEY (weapons_id) REFERENCES weapons(id)
+);
+
+
 INSERT INTO warriors(nom, age, race, img, faction)
 VALUES("Aragorn", 110, "Humain", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Iht9cBYkcVAFETAslxeLPY8c2Tjhgc8Ydg&s", "bien"),
 ("Legolas", 2930, "Elfe", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZmV1s61TumfsEr9mX-xZIt3m3YyFbknqdLw&s", "bien"),
@@ -27,13 +35,9 @@ VALUES("Aragorn", 110, "Humain", "https://encrypted-tbn0.gstatic.com/images?q=tb
 ("Haldir", 1000, "Elfe", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhJuVqwkghTZI0jYSrqs-9mhQPsJSidzEHnQ&s", "bien");
 
 INSERT INTO weapons(type)
-VALUES ("Sword"), ("Bow"), ("Ax");
+VALUES ("Epée"), ("Arc"), ("Hache"), ("Dague"), ("Bâton magique");
 
-CREATE TABLE member (
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  hashed_password VARCHAR(255) NOT NULL
-);
+
 
 CREATE TABLE questions (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -100,3 +104,7 @@ VALUES
 ("Quel est le nom de la plante que Gandalf utilise pour sauver Faramir ?", "Ail", "Athelas", "Misteltoe", "Rose", "Athelas"),
 ("Qui est le seigneur des forges qui créa l'épée Andúril ?", "Elrond", "Aragorn", "Isildur", "Sauron", "Elrond"),
 ("Quel est le nom de l’elfe qui a combattu les créatures du Mordor au côté de Frodon ?", "Thranduil", "Legolas", "Glorfindel", "Boromir", "Legolas");
+
+
+INSERT INTO warriorsweapons(warriors_id, weapons_id)
+  VALUES (1, 1), (2, 2), (3, 3), (4, 1), (5, 1), (6, 4), (7, 4), (8, 1), (9, 5), (10, 1), (11, 2);

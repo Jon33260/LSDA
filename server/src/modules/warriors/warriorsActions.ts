@@ -3,36 +3,43 @@ import type { RequestHandler } from "express";
 // Import access to data
 import warriorsRepository from "./warriorsRepository";
 
-// The B of BREAD - Browse (Read All) operation
-const browse: RequestHandler = async (req, res, next) => {
+// La méthode qui récupère tous les guerriers avec leurs armes
+const browseWithWeapons: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
-    const warriors = await warriorsRepository.readAll();
+    // Récupérer tous les guerriers avec leurs armes via la méthode du repository
+    const warriorsWithWeapons = await warriorsRepository.readAllWithWeapons();
 
-    // Respond with the items in JSON format
-    res.json(warriors);
+    // Répondre avec les données sous forme de JSON
+    res.json(warriorsWithWeapons);
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    // Passer l'erreur au middleware de gestion des erreurs
     next(err);
   }
 };
 
-// The R of BREAD - Read operation
+// Les autres méthodes CRUD pour les guerriers
+const browse: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch all warriors
+    const warriors = await warriorsRepository.readAll();
+
+    res.json(warriors);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific item based on the provided ID
     const warriorsId = Number(req.params.id);
     const warriors = await warriorsRepository.read(warriorsId);
 
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
     if (warriors == null) {
       res.sendStatus(404);
     } else {
       res.json(warriors);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -60,10 +67,8 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-// The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the item data from the request body
     const newWarrior = {
       nom: req.body.nom,
       age: req.body.age,
@@ -72,13 +77,10 @@ const add: RequestHandler = async (req, res, next) => {
       faction: req.body.faction,
     };
 
-    // Create the item
     const insertId = await warriorsRepository.create(newWarrior);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -95,9 +97,8 @@ const destroy: RequestHandler = async (req, res, next) => {
 
 const getGoodWarriors: RequestHandler = async (req, res, next) => {
   try {
-    // Récupérer uniquement les guerriers de la faction "bien"
-    const goodWarriors = await warriorsRepository.readByFaction("bien");
-
+    const goodWarriors =
+      await warriorsRepository.readByFactionWithWeapons("bien");
     res.json(goodWarriors);
   } catch (err) {
     next(err);
@@ -106,7 +107,8 @@ const getGoodWarriors: RequestHandler = async (req, res, next) => {
 
 const getDarkWarriors: RequestHandler = async (req, res, next) => {
   try {
-    const darkWarriors = await warriorsRepository.readByFactionDark("mal");
+    const darkWarriors =
+      await warriorsRepository.readByFactionWithWeapons("mal");
     res.json(darkWarriors);
   } catch (err) {
     next(err);
@@ -115,6 +117,7 @@ const getDarkWarriors: RequestHandler = async (req, res, next) => {
 
 export default {
   browse,
+  browseWithWeapons, // Ajouter cette ligne pour l'action de récupération des guerriers avec armes
   read,
   edit,
   add,

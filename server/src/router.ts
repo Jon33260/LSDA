@@ -9,6 +9,9 @@ const router = express.Router();
 
 import warriorsActions from "./modules/warriors/warriorsActions";
 
+// Routes pour récupérer les guerriers avec leurs armes
+router.get("/api/warriors/with-weapons", warriorsActions.browseWithWeapons);
+
 router.get("/api/warriors/mal", warriorsActions.getDarkWarriors);
 router.get("/api/warriors/bien", warriorsActions.getGoodWarriors);
 
