@@ -11,17 +11,6 @@
   overflow: hidden;
 }
 
-.error-content {
-  text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 10px;
-  color: #f1c40f;
-  font-family: "Uncial Antiqua", cursive;
-  position: relative;
-  z-index: 2;
-}
-
 .error-title {
   font-size: 50px;
   text-shadow: 4px 4px 10px #ff4500;
@@ -34,14 +23,22 @@
 }
 
 .gandalf-gif {
-  width: 300px;
-  margin-top: 20px;
+  width: 700px;
+  margin-left: 25rem;
+}
+
+.error-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .error-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
+  display: flex;
+  width: 10rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+
   font-size: 18px;
   color: white;
   background: #8b0000;

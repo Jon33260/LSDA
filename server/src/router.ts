@@ -19,7 +19,7 @@ router.get("/api/warriors", warriorsActions.browse);
 router.get("/api/warriors/:id", warriorsActions.read);
 router.put("/api/warriors/:id", warriorsActions.edit);
 router.post("/api/warriors", warriorsActions.add);
-router.delete("/api/warriors", warriorsActions.destroy);
+router.delete("/api/warriors/:id", warriorsActions.destroy);
 
 import weaponsActions from "./modules/weapons/weaponsActions";
 

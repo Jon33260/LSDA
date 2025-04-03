@@ -1,8 +1,13 @@
 import "../styles/NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import paysage from "../assets/images/paysage.jpg";
 
 export default function () {
+  const location = useLocation();
+  if (location.pathname === "/errorpage") {
+    return null;
+  }
+
   return (
     <div className="navbar">
       <Link to="/">

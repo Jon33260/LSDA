@@ -117,7 +117,7 @@ const getDarkWarriors: RequestHandler = async (req, res, next) => {
 
 export default {
   browse,
-  browseWithWeapons, // Ajouter cette ligne pour l'action de récupération des guerriers avec armes
+  browseWithWeapons, // Ajout de cette ligne pour l'action de récupération des guerriers avec armes
   read,
   edit,
   add,
