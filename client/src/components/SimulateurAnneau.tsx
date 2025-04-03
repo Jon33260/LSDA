@@ -55,7 +55,9 @@ export default function RingSimulator() {
 
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div className="sauron-eye-wrapper" onClick={handleEyeClick}>
-            <p>Le pouvoir de l'Anneau t’envahit...</p>
+            <p className={`spectral-text ${isWearingRing ? "visible" : ""}`}>
+              Le pouvoir de l'Anneau t’envahit...
+            </p>
             <img src={sauronEye} alt="Œil de Sauron" className="sauron-eye" />
             {/* Bouton pour retirer l'anneau si l'Œil est visible */}
             <button

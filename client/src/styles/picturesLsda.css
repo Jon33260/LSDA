@@ -1,34 +1,121 @@
-.warrior-card img {
-  height: 200px; /* Définir une hauteur uniforme */
-  width: 200px; /* Définir une largeur uniforme */
-  object-fit: cover;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.warrior-card {
-  border: solid black;
-  border-radius: 1rem;
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(173, 216, 230, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s
-    ease;
-}
-
-.warrior-card:hover {
-  transform: scale(1.05); /* Agrandir légèrement la carte */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajouter une ombre portée */
-  background-color: rgba(173, 216, 230, 0.6); /* Changer la couleur de fond lors du survol */
-}
-
-.warrior-card:hover img {
-  transform: scale(1.1);
-}
-
+/* Conteneur de guerriers, disposition en grille avec écart */
 .warrior-container {
   display: flex;
   gap: 4rem;
   flex-wrap: wrap;
   margin-left: 4.5rem;
+  justify-content: center; /* Centrer les cartes */
+}
+
+/* Carte de guerrier avec style antique */
+.warrior-card {
+  border: 2px solid #5a3d3d; /* Bordure d'aspect bois sombre */
+  border-radius: 15px; /* Coins arrondis */
+  text-align: center;
+  padding: 2rem;
+  margin-left: 50%;
+  background-color: rgba(240, 240, 240, 0.9); /* Fond léger rappelant le parchemin */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre portée douce */
+  max-width: 300px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s
+    ease;
+  font-family: "Cinzel", serif;
+  color: #3e2a47; /* Texte dans une couleur sombre rappelant la terre */
+}
+
+.warrior-card:hover {
+  transform: scale(1.05); /* Agrandissement léger de la carte */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Ombre plus forte au survol */
+  background-color: rgba(173, 216, 230, 0.8); /* Couleur de fond plus vive au survol */
+}
+
+/* Image de guerrier avec un effet de zoom au survol */
+.warrior-card img {
+  height: 200px; /* Taille uniforme de l'image */
+  width: 200px;
+  object-fit: cover; /* Garder le ratio de l'image */
+  border-radius: 8px; /* Coins arrondis sur l'image */
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.warrior-card:hover img {
+  transform: scale(1.1); /* Zoom léger sur l'image au survol */
+}
+
+/* Titres et textes */
+.warrior-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #3e2a47;
+}
+
+.warrior-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* Boutons de modification et suppression */
+button {
+  font-family: "Cinzel", serif;
+  background-color: #8b4513; /* Teinte boisée */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d2691e; /* Couleur de fond au survol */
+}
+
+/* Effets sur les boutons spécifiques */
+.delete-button {
+  background-color: #ff6347; /* Rouge tomate pour suppression */
+}
+
+.delete-button:hover {
+  background-color: #c0392b; /* Rouge plus sombre */
+}
+
+.edit-button {
+  background-color: #ffd700; /* Or pour modifier */
+}
+
+.edit-button:hover {
+  background-color: #f39c12; /* Jaune orangé au survol */
+}
+
+/* Formulaire d'édition */
+form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+form button {
+  background-color: #4caf50;
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
 }

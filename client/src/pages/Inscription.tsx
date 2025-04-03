@@ -17,11 +17,10 @@ export default function Inscription() {
     age: "",
     img: "",
     faction: "",
-    arme: "", // Ajout du champ "arme"
+    arme: "",
   });
 
   useEffect(() => {
-    // Sauvegarde dans localStorage à chaque modification
     localStorage.setItem("warriors", JSON.stringify(warriors));
   }, [warriors]);
 

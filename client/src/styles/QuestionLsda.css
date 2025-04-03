@@ -84,6 +84,8 @@ button:disabled {
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;
+  width: 30rem;
+  margin-left: 36%;
 }
 
 .score-container h2 {
@@ -92,9 +94,12 @@ button:disabled {
 }
 
 .ranking {
+  width: 24rem;
   margin-top: 20px;
   text-align: left;
   color: #ffcc00;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .score-item {

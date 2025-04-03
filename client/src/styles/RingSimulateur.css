@@ -71,7 +71,7 @@
   width: 70vw;
   height: auto;
   opacity: 0;
-  animation: eyeAppear 2s forwards;
+  animation: eyeAppear 10s forwards;
 }
 
 .spectral-effect {
@@ -110,4 +110,34 @@
     transform: scale(1);
     opacity: 0.6;
   }
+}
+
+@keyframes shadow-move {
+  0% {
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.6), -2px -2px 5px
+      rgba(0, 0, 255, 0.6);
+  }
+  25% {
+    text-shadow: -2px -2px 5px rgba(255, 255, 0, 0.6), 2px 2px 5px
+      rgba(0, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow: 3px -3px 6px rgba(255, 0, 255, 0.7), -3px 3px 6px
+      rgba(0, 255, 0, 0.7);
+  }
+  75% {
+    text-shadow: -3px 3px 6px rgba(255, 165, 0, 0.7), 3px -3px 6px
+      rgba(0, 255, 255, 0.7);
+  }
+  100% {
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.6), -2px -2px 5px
+      rgba(0, 0, 255, 0.6);
+  }
+}
+
+.spectral-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  animation: shadow-move 2s infinite alternate;
 }

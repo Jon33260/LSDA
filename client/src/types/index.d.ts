@@ -10,4 +10,6 @@ interface Warrior {
 
 interface WarriorsProps {
   warrior: Warrior;
+  onDeleteWarrior?: (id: number) => void; // Ajout de la fonction pour supprimer un guerrier
+  onUpdateWarrior?: (warrior: Warrior) => void; // Ajout de la fonction pour mettre à jour un guerrier
 }

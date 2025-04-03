@@ -55,8 +55,8 @@ export default function QuestionsLsda() {
     const storedScores: Score[] = JSON.parse(
       localStorage.getItem("scores") || "[]",
     );
-    setScores(storedScores); // Charger les scores à partir du localStorage
-  }, []); // Ce useEffect se déclenche lors du montage du composant
+    setScores(storedScores);
+  }, []);
 
   const getComputerAnswer = (correctAnswer: string): string => {
     const options = ["option1", "option2", "option3", "option4"];
@@ -64,11 +64,11 @@ export default function QuestionsLsda() {
 
     switch (difficulty) {
       case "easy":
-        return randomOption;
+        return Math.random() < 0.5 ? correctAnswer : randomOption;
       case "medium":
         return Math.random() < 0.75 ? correctAnswer : randomOption;
       case "hard":
-        return Math.random() < 0.9 ? correctAnswer : randomOption;
+        return Math.random() < 0.95 ? correctAnswer : randomOption;
       default:
         return randomOption;
     }
@@ -86,6 +86,11 @@ export default function QuestionsLsda() {
     }
 
     const computerAnswer = getComputerAnswer(correctAnswer);
+
+    console.info(`Utilisateur a répondu : ${answer}`);
+    console.info(`Réponse correcte : ${correctAnswer}`);
+    console.info(`Gandalf a répondu : ${computerAnswer}`);
+    console.info(`Gandalf a bon ? ${computerAnswer === correctAnswer}`);
     if (computerAnswer === correctAnswer) {
       setGandalfScore(gandalfScore + 1); // Incrémente le score de Gandalf
     }
@@ -98,41 +103,33 @@ export default function QuestionsLsda() {
       }
       setSelectedAnswer(null); // Réinitialise la réponse sélectionnée
       setIsAnswerCorrect(null); // Réinitialise la validité de la réponse
-    }, 1000);
+    }, 1500);
   };
 
   const saveScore = () => {
-    // Si l'utilisateur n'a pas encore de pseudo, on l'assigne par défaut à "Joueur Anonyme"
     const newScore: Score = {
       username: username || "Joueur Anonyme",
       userScore: score,
       gandalfScore: gandalfScore,
     };
 
-    // Récupération des scores depuis le localStorage
     const storedScores: Score[] = JSON.parse(
       localStorage.getItem("scores") || "[]",
     );
 
-    // Vérifier si l'utilisateur existe déjà dans les scores
     const existingScoreIndex = storedScores.findIndex(
       (s) => s.username === newScore.username,
     );
 
     if (existingScoreIndex !== -1) {
-      // Si l'utilisateur existe déjà, mettre à jour son score
       storedScores[existingScoreIndex] = newScore;
     } else {
-      // Sinon, ajouter le nouveau score
       storedScores.push(newScore);
     }
 
-    // Trier les scores par ordre décroissant
     storedScores.sort((a, b) => b.userScore - a.userScore);
-
-    // Sauvegarder les scores dans le localStorage
     localStorage.setItem("scores", JSON.stringify(storedScores));
-    setScores(storedScores); // Mettre à jour l'état des scores
+    setScores(storedScores);
   };
 
   const displayScores = () => {
@@ -152,12 +149,23 @@ export default function QuestionsLsda() {
     setScores([]); // Réinitialiser l'état des scores dans React
   };
 
+  // Fonction pour réinitialiser le quiz
+  const resetQuiz = () => {
+    setQuizFinished(false);
+    setScore(0);
+    setGandalfScore(0);
+    setQuestionIndex(0);
+    setUsername("");
+    setSelectedAnswer(null);
+    setIsAnswerCorrect(null);
+  };
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (quizFinished) {
       saveScore(); // Appeler `saveScore` uniquement après la fin du quiz
     }
-  }, [quizFinished]); // Ce useEffect se déclenche uniquement lorsque `quizFinished` est `true`
+  }, [quizFinished]);
 
   if (quizFinished) {
     return (
@@ -184,6 +192,11 @@ export default function QuestionsLsda() {
 
         <button type="button" onClick={resetScores}>
           Réinitialiser les scores
+        </button>
+
+        {/* Ajouter le bouton pour recommencer le quiz */}
+        <button type="button" onClick={resetQuiz}>
+          Recommencer le quiz
         </button>
       </div>
     );

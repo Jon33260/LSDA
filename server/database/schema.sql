@@ -16,8 +16,8 @@ CREATE TABLE weapons (
 CREATE TABLE warriorsweapons (
   warriors_id INT UNSIGNED NOT NULL,
   weapons_id INT UNSIGNED NOT NULL,
-  FOREIGN KEY (warriors_id) REFERENCES warriors(id),
-  FOREIGN KEY (weapons_id) REFERENCES weapons(id)
+  FOREIGN KEY (warriors_id) REFERENCES warriors(id) ON DELETE CASCADE,
+  FOREIGN KEY (weapons_id) REFERENCES weapons(id) ON DELETE CASCADE
 );
 
 
