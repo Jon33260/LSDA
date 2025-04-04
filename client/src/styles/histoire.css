@@ -27,6 +27,18 @@ p {
   font-size: 1.3rem;
 }
 
+.image-anneau {
+  width: 80%; /* Ajuste la largeur */
+  max-width: 600px; /* Taille max */
+  height: auto;
+  display: block;
+  margin: 20px auto; /* Centre les images */
+  margin-bottom: 4rem;
+  border-radius: 10px; /* Arrondit légèrement les bords */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Effet d'ombre pour du style */
+  object-fit: contain;
+}
+
 @media screen and (max-width: 768px) {
   p {
     font-size: 1rem; /* Réduit la taille de la police pour les petits écrans */

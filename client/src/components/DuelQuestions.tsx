@@ -80,19 +80,15 @@ export default function QuestionsLsda() {
     const userIsCorrect = answer === correctAnswer;
     if (userIsCorrect) {
       setIsAnswerCorrect(true);
-      setScore(score + 1); // Incrémente le score de l'utilisateur
+      setScore(score + 1);
     } else {
       setIsAnswerCorrect(false);
     }
 
     const computerAnswer = getComputerAnswer(correctAnswer);
 
-    console.info(`Utilisateur a répondu : ${answer}`);
-    console.info(`Réponse correcte : ${correctAnswer}`);
-    console.info(`Gandalf a répondu : ${computerAnswer}`);
-    console.info(`Gandalf a bon ? ${computerAnswer === correctAnswer}`);
     if (computerAnswer === correctAnswer) {
-      setGandalfScore(gandalfScore + 1); // Incrémente le score de Gandalf
+      setGandalfScore((prev) => prev + 1);
     }
 
     setTimeout(() => {
@@ -146,10 +142,9 @@ export default function QuestionsLsda() {
 
   const resetScores = () => {
     localStorage.removeItem("scores");
-    setScores([]); // Réinitialiser l'état des scores dans React
+    setScores([]);
   };
 
-  // Fonction pour réinitialiser le quiz
   const resetQuiz = () => {
     setQuizFinished(false);
     setScore(0);
@@ -163,7 +158,7 @@ export default function QuestionsLsda() {
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (quizFinished) {
-      saveScore(); // Appeler `saveScore` uniquement après la fin du quiz
+      saveScore();
     }
   }, [quizFinished]);
 
@@ -194,7 +189,6 @@ export default function QuestionsLsda() {
           Réinitialiser les scores
         </button>
 
-        {/* Ajouter le bouton pour recommencer le quiz */}
         <button type="button" onClick={resetQuiz}>
           Recommencer le quiz
         </button>
