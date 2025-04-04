@@ -1,3 +1,5 @@
+import image3 from "../assets/images/anneau.jpg";
+
 export default function Histoire() {
   return (
     <section className="histoire">
@@ -34,6 +36,12 @@ export default function Histoire() {
           ne tombe entre les mains de Sauron.
         </p>
       </section>
+
+      <img
+        src={image3}
+        alt="Illustration de la Terre du Milieu"
+        className="image-anneau"
+      />
 
       <section>
         <h2>L'Alliance de l'Anneau</h2>

@@ -1,5 +1,4 @@
 .container {
-  background-image: url("/src/assets/images/foncombe.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,9 +28,23 @@
   display: flex;
   width: 60%; /* Le paragraphe prend toute la largeur */
   margin: 0; /* Supprime les marges par défaut */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 0 10px; /* Ajoute un léger padding pour éviter que le texte colle aux bords */
   box-sizing: border-box; /* Assure que le padding ne dépasse pas la largeur */
   line-height: 1.9;
+}
+
+.image-top,
+.image-bottom {
+  width: 80%; /* Ajuste la largeur */
+  max-width: 600px; /* Taille max */
+  height: auto;
+  display: block;
+  margin: 20px auto; /* Centre les images */
+  border-radius: 10px; /* Arrondit légèrement les bords */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Effet d'ombre pour du style */
+  object-fit: contain;
 }
 
 @media screen and (max-width: 600px) {

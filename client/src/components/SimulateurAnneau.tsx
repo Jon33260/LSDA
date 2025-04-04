@@ -34,7 +34,6 @@ export default function RingSimulator() {
 
   return (
     <div className="main-container">
-      {/* Div contenant uniquement le titre et le bouton */}
       <div className="ring-content">
         <h2>Simulateur de l'Anneau</h2>
         {!isWearingRing && (
@@ -59,7 +58,7 @@ export default function RingSimulator() {
               Le pouvoir de l'Anneau t’envahit...
             </p>
             <img src={sauronEye} alt="Œil de Sauron" className="sauron-eye" />
-            {/* Bouton pour retirer l'anneau si l'Œil est visible */}
+
             <button
               type="button"
               onClick={handleEyeClick}

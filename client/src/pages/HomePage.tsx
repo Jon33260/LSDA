@@ -1,43 +1,49 @@
 import "../styles/NavBar.css";
 import { useEffect, useRef } from "react";
-import musique from "../assets/images/LSDA.mp3"; // Importation de la musique
+import musique from "../assets/images/LSDA.mp3";
+import image1 from "../assets/paysage1.jpg";
+import image2 from "../assets/paysage2.jpg";
 
 export default function HomePage() {
-  const audioRef = useRef<HTMLAudioElement | null>(null); // Référence à l'élément audio
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const audioElement = audioRef.current;
 
     if (audioElement) {
-      // D'abord, on attend que l'audio se charge et soit prêt pour la lecture
-      const onCanPlay = () => {
-        // Attendre un peu avant de désactiver le mute
-        setTimeout(() => {
-          audioElement.muted = false;
-        }, 1000); // Attendre 1 seconde avant de désactiver le mute
-      };
+      audioElement
+        .play()
+        .then(() => {
+          audioElement.volume = 0.1;
 
-      // Ajouter un écouteur d'événement pour savoir quand l'audio est prêt à jouer
-      audioElement.addEventListener("canplay", onCanPlay);
-
-      // Nettoyer l'événement au démontage du composant
-      return () => {
-        audioElement.removeEventListener("canplay", onCanPlay);
-      };
+          setTimeout(() => {
+            audioElement.volume = 0.1;
+          }, 1000);
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la lecture de la musique:", error);
+        });
     }
-  }, []); // Le useEffect s'exécute une seule fois au montage
+  }, []);
 
   return (
     <section className="container">
-      {/* Balise audio avec autoplay et muted au départ */}
-      <audio ref={audioRef} autoPlay loop muted>
+      {/* Balise audio avec autoplay mais sans muted */}
+      {/* biome-ignore lint/a11y/useMediaCaption: <explanation> */}
+      <audio ref={audioRef} autoPlay loop>
         <source src={musique} type="audio/mp3" />
-        Votre navigateur ne supporte pas la lecture audio.
       </audio>
 
       <div className="titre">
-        <h2>🏰 Bienvenue en Terre du Milieu ! 🌿✨</h2>
+        <h2>🏰✨ Bienvenue en Terre du Milieu ! 🌿🧙‍♂️🔥</h2>
       </div>
+
+      <img
+        src={image1}
+        alt="Illustration de la Terre du Milieu"
+        className="image-top"
+      />
+
       <p className="introduction">
         Plongez dans l’univers épique du Seigneur des Anneaux, un monde où la
         magie, l’honneur et le destin s’entrelacent. Des vastes plaines du Rohan
@@ -50,6 +56,11 @@ export default function HomePage() {
         elfe ou un humble hobbit prêt à changer le destin du monde ? 🌍⚔️ ➡️
         Entrez dans l’aventure et laissez la légende s’écrire ! 🏹📜
       </p>
+      <img
+        src={image2}
+        alt="Un autre visuel du Seigneur des Anneaux"
+        className="image-bottom"
+      />
     </section>
   );
 }
